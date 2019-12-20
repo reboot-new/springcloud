@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: springcloud2-producer
+  datasource:
+    username: root
+    password: Effective
+    url: jdbc:mysql:///activiti?useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#  activiti:
+#    database-schema-update: true
+  aop:
+    auto: true
+    proxy-target-class: true
+
+
+eureka:
+  instance:
+    prefer-ip-address: false
+  client:
+    enabled: false
+    serviceUrl:
+      defaultZone: http://192.168.0.57:9101/eureka/
+
+info:
+  app:
+     name: springcloud2-producer
+
+server:
+  port: 8092

@@ -1,0 +1,79 @@
+info:
+  app:
+    name: springcloud2
+
+app.id:
+  springcloud2
+
+apollo:
+  bootstrap:
+    enabled: false
+    namespaces: application, test
+  meta: http://127.0.0.1:9101
+#  meta: http://192.168.0.34:9101
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    enabled: false
+    serviceUrl:
+      defaultZone: http://127.0.0.1:9101/eureka/
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: info, service-registry
+sql
+spring:
+  application:
+    name: springcloud2
+#  cloud:
+#    service-registry:
+#      auto-registration:
+#        enabled: true
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+  datasource:
+    url: jdbc:sqlserver://10.52.1.102:1433;DatabaseName=gzzhpt
+    username: sa
+    password: elitel!@3$
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#    url: jdbc:mysql://127.0.0.1:3306/rain?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+#    username: root
+#    password: Effective
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+  main:
+    allow-bean-definition-overriding: true
+
+mybatis:
+  mapper-locations: classpath:mybatis/*.xml
+#  type-aliases-package: com.tan.springcloud2.dao
+
+el:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 1
+    annotataion:
+      prefix: springcloud2
+    pool:
+      max-idle: 10
+      min-idle: 0
+      max-active: 100
+      max-wait: -1
+    timeout: 0
+
+server:
+  port: 9090
+
+#agent:
+#  namespace: mynamespace
+#  application_code: Your_ApplicationName
+#  sample_n_per_3_secs: -1
+#
+#collector:
+#  servers: 127.0.0.1:11801

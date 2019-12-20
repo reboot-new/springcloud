@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.1.RELEASE</version>
+        <relativePath/>
+    </parent>
+    <!--<parent>-->
+        <!--<groupId>com.alipay.sofa</groupId>-->
+        <!--<artifactId>sofaboot-dependencies</artifactId>-->
+        <!--<version>3.1.0</version>-->
+    <!--</parent>-->
+    <groupId>com.tan</groupId>
+    <artifactId>springcloud2</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>springcloud2</name>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <version>2.1.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-client</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.11</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.elitel</groupId>
+            <artifactId>elitel-datacache</artifactId>
+            <version>0.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- 去掉 spring boot 自带的log -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- 添加  log4j2 依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>mysql</groupId>-->
+        <!--<artifactId>mysql-connector-java</artifactId>-->
+        <!--<scope>runtime</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.mybatis.spring.boot</groupId>-->
+        <!--<artifactId>mybatis-spring-boot-starter</artifactId>-->
+        <!--<version>1.3.2</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/sqljdbc4 -->
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>sqljdbc4</artifactId>
+            <version>4.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>sqljdbc4</artifactId>
+            <version>4.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign.form</groupId>
+            <artifactId>feign-form</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign.form</groupId>
+            <artifactId>feign-form-spring</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.tan</groupId>
+            <artifactId>hydro-com</artifactId>
+            <version>0.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jacob</groupId>
+            <artifactId>jacob</artifactId>
+            <version>1.17-M2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-ribbon</artifactId>
+            <version>1.4.7.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.20</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>io.github.swagger2markup</groupId>-->
+            <!--<artifactId>swagger2markup</artifactId>-->
+            <!--<version>1.3.1</version>-->
+        <!--</dependency>-->
+    </dependencies>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <!--<finalName>${artifactId}</finalName>-->
+        <plugins>
+
+            <!--<plugin>-->
+                <!--<groupId>com.github.wvengen</groupId>-->
+                <!--<artifactId>proguard-maven-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>proguard</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+                <!--<configuration>-->
+                    <!--<proguardVersion>5.3.3</proguardVersion>-->
+                    <!--<injar>${project.build.finalName}.jar</injar>-->
+                    <!--<outjar>${project.build.finalName}.jar</outjar>-->
+                    <!--<obfuscate>true</obfuscate>-->
+                    <!--<options>-->
+                        <!--<option>-dontshrink</option>-->
+                        <!--<option>-dontoptimize</option>-->
+                        <!--&lt;!&ndash; This option will replace all strings in reflections method invocations with new class names.-->
+                        <!--For example, invokes Class.forName('className')&ndash;&gt;-->
+                        <!--<option>-adaptclassstrings</option>-->
+                        <!--&lt;!&ndash; This option will save all original annotations and etc. Otherwise all we be removed from files.&ndash;&gt;-->
+                        <!--<option>-keepattributes Exceptions,InnerClasses,Signature,Deprecated,-->
+                            <!--SourceFile,LineNumberTable,*Annotation*,EnclosingMethod-->
+                        <!--</option>-->
+                        <!--&lt;!&ndash; This option will save all original names in interfaces (without obfuscate).&ndash;&gt;-->
+                        <!--<option>-keepnames interface **</option>-->
+                        <!--&lt;!&ndash; This option will save all original methods parameters in files defined in -keep sections,-->
+                        <!--otherwise all parameter names will be obfuscate.&ndash;&gt;-->
+                        <!--<option>-keepparameternames</option>-->
+                        <!--&lt;!&ndash; This option will save all original class files (without obfuscate) but obfuscate all in domain package.&ndash;&gt;-->
+                        <!--<option>-keep class !com.slm.proguard.example.spring.boot.domain.** { *; }</option>-->
+                        <!--&lt;!&ndash; This option will save all original class files (without obfuscate) in service package&ndash;&gt;-->
+                        <!--&lt;!&ndash;<option>-keep class com.slm.proguard.example.spring.boot.service { *; }</option>&ndash;&gt;-->
+                        <!--&lt;!&ndash; This option will save all original interfaces files (without obfuscate) in all packages.&ndash;&gt;-->
+                        <!--<option>-keep interface * extends * { *; }</option>-->
+                        <!--&lt;!&ndash; This option will save all original defined annotations in all class in all packages.&ndash;&gt;-->
+                        <!--<option>-keepclassmembers class * {-->
+                            <!--@org.springframework.beans.factory.annotation.Autowired *;-->
+                            <!--@org.springframework.beans.factory.annotation.Value *;-->
+                            <!--}-->
+                        <!--</option>-->
+                    <!--</options>-->
+                    <!--<libs>-->
+                        <!--&lt;!&ndash; Include main JAVA library required.&ndash;&gt;-->
+                        <!--<lib>${java.home}/lib/rt.jar</lib>-->
+                        <!--&lt;!&ndash; Include crypto JAVA library if necessary.&ndash;&gt;-->
+                        <!--<lib>${java.home}/lib/jce.jar</lib>-->
+                    <!--</libs>-->
+                <!--</configuration>-->
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<groupId>net.sf.proguard</groupId>-->
+                        <!--<artifactId>proguard-base</artifactId>-->
+                        <!--<version>5.3.3</version>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--</plugin>-->
+            <!--Maven通过Maven Surefire Plugin插件执行单元测试-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>com.alipay.sofa</groupId>-->
+                <!--<artifactId>sofa-ark-maven-plugin</artifactId>-->
+            <!--</plugin>-->
+            <!--&lt;!&ndash; Run the generated asciidoc through Asciidoctor to generate-->
+                 <!--other documentation types, such as PDFs or HTML5 &ndash;&gt;-->
+            <!--&lt;!&ndash;通过Asciidoctor使得asciidoc生成其他的文档格式，例如：PDF 或者HTML5&ndash;&gt;-->
+            <!--<plugin>-->
+                <!--<groupId>org.asciidoctor</groupId>-->
+                <!--<artifactId>asciidoctor-maven-plugin</artifactId>-->
+                <!--<version>1.5.3</version>-->
+                <!--&lt;!&ndash; Include Asciidoctor PDF for pdf generation &ndash;&gt;-->
+                <!--&lt;!&ndash;生成PDF&ndash;&gt;-->
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<groupId>org.asciidoctor</groupId>-->
+                        <!--<artifactId>asciidoctorj-pdf</artifactId>-->
+                        <!--<version>1.5.0-alpha.14</version>-->
+                    <!--</dependency>-->
+                    <!--&lt;!&ndash; Comment this section to use the default jruby artifact provided by the plugin &ndash;&gt;-->
+                    <!--<dependency>-->
+                        <!--<groupId>org.jruby</groupId>-->
+                        <!--<artifactId>jruby-complete</artifactId>-->
+                        <!--<version>1.7.21</version>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
+
+                <!--&lt;!&ndash; Configure generic document generation settings &ndash;&gt;-->
+                <!--&lt;!&ndash;文档生成配置&ndash;&gt;-->
+                <!--<configuration>-->
+                    <!--<sourceDirectory>${asciidoctor.input.directory}</sourceDirectory>-->
+                    <!--<sourceDocumentName>index.adoc</sourceDocumentName>-->
+                    <!--<attributes>-->
+                        <!--<doctype>book</doctype>-->
+                        <!--<toc>left</toc>-->
+                        <!--<toclevels>3</toclevels>-->
+                        <!--<numbered></numbered>-->
+                        <!--<hardbreaks></hardbreaks>-->
+                        <!--<sectlinks></sectlinks>-->
+                        <!--<sectanchors></sectanchors>-->
+                        <!--<generated>${generated.asciidoc.directory}</generated>-->
+                    <!--</attributes>-->
+                <!--</configuration>-->
+                <!--&lt;!&ndash; Since each execution can only handle one backend, run-->
+                   <!--separate executions for each desired output type &ndash;&gt;-->
+                <!--&lt;!&ndash;因为每次执行只能处理一个后端，所以对于每个想要的输出类型，都是独立分开执行&ndash;&gt;-->
+                <!--<executions>-->
+                    <!--&lt;!&ndash;html5&ndash;&gt;-->
+                    <!--<execution>-->
+                        <!--<id>output-html</id>-->
+                        <!--<phase>test</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>process-asciidoc</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<backend>html5</backend>-->
+                            <!--<outputDirectory>${asciidoctor.html.output.directory}</outputDirectory>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                    <!--&lt;!&ndash;pdf&ndash;&gt;-->
+                    <!--<execution>-->
+                        <!--<id>output-pdf</id>-->
+                        <!--<phase>test</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>process-asciidoc</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<backend>pdf</backend>-->
+                            <!--<outputDirectory>${asciidoctor.pdf.output.directory}</outputDirectory>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>io.github.swagger2markup</groupId>-->
+                <!--<artifactId>swagger2markup-maven-plugin</artifactId>-->
+                <!--<version>1.2.0</version>-->
+                <!--<configuration>-->
+                    <!--&lt;!&ndash;此处端口一定要是当前项目启动所用的端口&ndash;&gt;-->
+                    <!--<swaggerInput>http://localhost:8080/v2/api-docs</swaggerInput>-->
+                    <!--<outputDir>src/docs/asciidoc/generated</outputDir>-->
+                    <!--<config>-->
+                        <!--&lt;!&ndash; 除了ASCIIDOC之外，还有MARKDOWN和CONFLUENCE_MARKUP可选 &ndash;&gt;-->
+                        <!--<swagger2markup.markupLanguage>ASCIIDOC</swagger2markup.markupLanguage>-->
+                    <!--</config>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>org.asciidoctor</groupId>-->
+                <!--<artifactId>asciidoctor-maven-plugin</artifactId>-->
+                <!--<version>1.5.3</version>-->
+                <!--&lt;!&ndash; Include Asciidoctor PDF for pdf generation &ndash;&gt;-->
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<groupId>org.asciidoctor</groupId>-->
+                        <!--<artifactId>asciidoctorj-pdf</artifactId>-->
+                        <!--<version>1.5.0-alpha.10.1</version>-->
+                    <!--</dependency>-->
+                    <!--<dependency>-->
+                        <!--<groupId>org.jruby</groupId>-->
+                        <!--<artifactId>jruby-complete</artifactId>-->
+                        <!--<version>1.7.21</version>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
+                <!--&lt;!&ndash; Configure generic document generation settings &ndash;&gt;-->
+                <!--<configuration>-->
+                    <!--<sourceDirectory>src/docs/asciidoc/generated</sourceDirectory>-->
+                    <!--<sourceHighlighter>coderay</sourceHighlighter>-->
+                    <!--<attributes>-->
+                        <!--<toc>left</toc>-->
+                    <!--</attributes>-->
+                <!--</configuration>-->
+                <!--&lt;!&ndash; Since each execution can only handle one backend, run-->
+                     <!--separate executions for each desired output type &ndash;&gt;-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>output-html</id>-->
+                        <!--<phase>generate-resources</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>process-asciidoc</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<backend>html5</backend>-->
+                            <!--<outputDirectory>src/docs/asciidoc/html</outputDirectory>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+
+                    <!--<execution>-->
+                        <!--<id>output-pdf</id>-->
+                        <!--<phase>generate-resources</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>process-asciidoc</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<backend>pdf</backend>-->
+                            <!--<outputDirectory>src/docs/asciidoc/pdf</outputDirectory>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+
+                <!--</executions>-->
+            <!--</plugin>-->
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>elitel</id>
+            <name>Elitel Milestones</name>
+            <url>http://192.168.0.139:2002/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <profiles>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                    <id>maven-snapshot</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                    <id>maven-snapshot</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+</project>
