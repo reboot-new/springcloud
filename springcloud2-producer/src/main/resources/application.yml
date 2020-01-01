@@ -4,10 +4,20 @@ spring:
   datasource:
     username: root
     password: Effective
-    url: jdbc:mysql:///activiti?useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/rain?useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8
     driver-class-name: com.mysql.cj.jdbc.Driver
-#  activiti:
-#    database-schema-update: true
+    type: com.alibaba.druid.pool.DruidDataSource
+  jpa:
+    show_sql: true
+#    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    # database-platform: cn.luutqf.springboot.dialect.JsonbPostgresDialect
+    hibernate:
+      ddl-auto: update  # none: 关闭hibernate的自动创建表结构的机制
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    database: mysql
+
   aop:
     auto: true
     proxy-target-class: true

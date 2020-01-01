@@ -23,13 +23,13 @@ eureka:
 #  endpoints:
 #    web:
 #      exposure:
-#        include: info, service-registry
+#        include: info, repository-registry
 sql
 spring:
   application:
     name: springcloud2
 #  cloud:
-#    service-registry:
+#    repository-registry:
 #      auto-registration:
 #        enabled: true
   redis:
