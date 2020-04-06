@@ -98,7 +98,6 @@ public class JsonHelper {
                 "\"price\": 8.95},{ \"category\": \"fiction\",\"author\": \"Evelyn Waugh\","+
                 "\"title\": \"Sword of Honour\",\"price\": 12.99,\"isbn\": \"0-553-21311-3\""+
                 "}],\"bicycle\": {\"color\": \"red\",\"price\": 19.95}}}";
-
         JSONObject jobj =  (JSONObject) JSONObject.parse(jsonStr);
         List<Map<String, Object>> list = new ArrayList<>();
         Map<String, Object> map = new HashMap<>();

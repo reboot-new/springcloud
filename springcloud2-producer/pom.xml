@@ -259,8 +259,6 @@
             <artifactId>tika-parsers</artifactId>
             <version>1.14</version>
         </dependency>
-
-
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -382,8 +380,6 @@
             <artifactId>ehcache</artifactId>
             <version>3.8.1</version>
         </dependency>
-
-
         <dependency>
             <groupId>org.geotools</groupId>
             <artifactId>gt-api</artifactId>
@@ -454,6 +450,73 @@
             <version>2.1.7</version>
         </dependency>
 
+        <!--rabbitmq-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-amqp</artifactId>-->
+        <!--</dependency>-->
+        <!--redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>2.1.6.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <!-- 该依赖必加，里面有sping对schedule的支持 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+        <!-- springboot2.0已经将oauth2.0与security整合在一起 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!-- 由于一些注解和API从spring security5.0中移除，所以需要导入下面的依赖包  -->
+        <dependency>
+            <groupId>org.springframework.security.oauth.boot</groupId>
+            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+            <version>2.0.0.RELEASE</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.elitel</groupId>-->
+            <!--<artifactId>elitel-license</artifactId>-->
+            <!--<version>0.0.2</version>-->
+        <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>2.4.1</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>org.apache.flink</groupId>-->
+            <!--<artifactId>flink-java</artifactId>-->
+            <!--<version>1.7.2</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.flink</groupId>-->
+            <!--<artifactId>flink-streaming-java_2.11</artifactId>-->
+            <!--<version>1.7.2</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.flink</groupId>-->
+            <!--<artifactId>flink-clients_2.11</artifactId>-->
+            <!--<version>1.7.2</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <dependencyManagement>
@@ -469,16 +532,16 @@
     </dependencyManagement>
 
     <repositories>
-        <!--<repository>-->
-            <!--<id>elitel</id>-->
-            <!--<name>Elitel Milestones</name>-->
-            <!--<url>http://192.168.0.139:2002/nexus/content/groups/public/</url>-->
-        <!--</repository>-->
         <repository>
             <id>elitel</id>
             <name>Elitel Milestones</name>
-            <url>http://119.61.22.194:2002/nexus/content/groups/public/</url>
+            <url>http://192.168.0.139:2002/nexus/content/groups/public/</url>
         </repository>
+        <!--<repository>-->
+            <!--<id>elitel</id>-->
+            <!--<name>Elitel Milestones</name>-->
+            <!--<url>http://119.61.22.194:2002/nexus/content/groups/public/</url>-->
+        <!--</repository>-->
     </repositories>
 
     <build>

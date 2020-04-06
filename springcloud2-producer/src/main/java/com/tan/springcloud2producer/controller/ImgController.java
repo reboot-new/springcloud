@@ -17,7 +17,7 @@ import java.io.OutputStream;
 public class ImgController {
 
     @RequestMapping("/get")
-    public String Get(String path) {
+    public String Get(String path) throws Exception {
         String res = ImgHelper.imageToBase64(path);
         return  res;
     }

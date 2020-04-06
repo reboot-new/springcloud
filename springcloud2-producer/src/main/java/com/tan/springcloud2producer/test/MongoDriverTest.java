@@ -180,11 +180,12 @@ public class MongoDriverTest {
         collection.deleteOne(eq("i", 110));
 
         // Delete Many
-        DeleteResult deleteResult = collection.deleteMany(gte("i", 100));
-        System.out.println(deleteResult.getDeletedCount());
+//        DeleteResult deleteResult = collection.deleteMany(gte("i", 100));
+//        System.out.println(deleteResult.getDeletedCount());
 
-        collection.drop();
+//        collection.drop();
 
+        /*
         // ordered bulk writes
         List<WriteModel<Document>> writes = new ArrayList<WriteModel<Document>>();
         writes.add(new InsertOneModel<Document>(new Document("_id", 4)));
@@ -195,14 +196,14 @@ public class MongoDriverTest {
         writes.add(new ReplaceOneModel<Document>(new Document("_id", 3), new Document("_id", 3).append("x", 4)));
 
         collection.bulkWrite(writes);
+*/
+//        collection.drop();
 
-        collection.drop();
-
-        collection.bulkWrite(writes, new BulkWriteOptions().ordered(false));
+//        collection.bulkWrite(writes, new BulkWriteOptions().ordered(false));
         //collection.find().forEach(printBlock);
 
         // Clean up
-        database.drop();
+//        database.drop();
 
         // release resources
         mongoClient.close();

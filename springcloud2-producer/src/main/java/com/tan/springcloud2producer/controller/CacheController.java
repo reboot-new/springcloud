@@ -18,7 +18,7 @@ public class CacheController {
      * @return
      */
     @RequestMapping("/qiang")
-    public ResponseEntity<String> cacheControl(){
+    public ResponseEntity<String> cacheControl() throws Exception{
         String res = ImgHelper.imageToBase64("C:\\Users\\Administrator\\Desktop\\temp\\docker部署管理技术架构图.png");
         HttpHeaders headers = new HttpHeaders();
         headers.add("Cache-Control", "public, max-age=31536000");

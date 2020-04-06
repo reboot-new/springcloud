@@ -24,7 +24,7 @@ eureka:
 #    web:
 #      exposure:
 #        include: info, repository-registry
-sql
+
 spring:
   application:
     name: springcloud2

@@ -1,28 +1,45 @@
 package com.tan.springcloud2producer.helper;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 import java.io.*;
 
+/**
+ * 图片帮助类，主要功能：图片的格式转化、图片处理等
+ * @author tan_alpha
+ * @date 2019/5/18 10:59
+ */
 public class ImgHelper {
+
+    private Logger logger = LoggerFactory.getLogger(ImgHelper.class);
+
     /**
      * 将图片转化为字节数组字符串，并对其进行Base64编码处理
      *
      * @param imgFilePath 图片文件路径
-     * @return
+     * @return 输入图片的base64格式
      * @author tan_alpha
      * @date 2019/5/18 17:59
+     * <p>
+     * 修改记录：修改时间    修改人     修改说明
+     * 20200203    牛晨茜     修改在imgFilePath为相对路径下出现异常
      **/
-    public static String imageToBase64(String imgFilePath) {
-        FileInputStream in = null;
+    public static String imageToBase64(String imgFilePath) throws Exception {
+        //声明文件输入流
+        FileInputStream imgInStream = null;
+
         try {
-            in = new FileInputStream(imgFilePath);
-        }catch (FileNotFoundException ex){
+            imgInStream = new FileInputStream(imgFilePath);
+        } catch (FileNotFoundException ex) {
             ex.printStackTrace();
+        }finally {
+            imgInStream.close();
         }
-        return imageToBase64(in);
+        return imageToBase64(imgInStream);
     }
 
     /**
@@ -83,7 +100,7 @@ public class ImgHelper {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         String res = imageToBase64("G:\\图片\\手机相册\\4s最后一波\\860OKMZO\\IMG_0566.JPG");
         System.out.println(res);
         base64ToImageFile(res,"C:\\Users\\Administrator\\Desktop\\test\\1.gif");

@@ -1,7 +1,11 @@
 package com.tan.springcloud2producer.controller;
 
 
+import com.elitel.license.LicenseController;
 import com.tan.springcloud2producer.entity.Student;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +20,11 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/hello")
+@Lazy(false)
 public class HelloController {
+
+    private Logger logger = LoggerFactory.getLogger(HelloController.class);
+
     @RequestMapping("/index")
     public String index(HttpServletRequest request, HttpServletResponse response){
 //        return "/hello/index";
@@ -89,8 +97,22 @@ public class HelloController {
 //        s1.setAge(null);
 //        s1.setName("nihao");
 //        list.add(s1);
+
+        //
         Map<String,String> map = new HashMap<>();
         map.put("name",null);
         return map;
+    }
+
+    @RequestMapping("/log")
+    public String testLog(){
+
+        String message = null;
+        try {
+            message.toString();
+        }catch (Exception ex){
+            logger.error("测试空指针异常",ex);
+        }
+        return message;
     }
 }

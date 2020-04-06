@@ -10,6 +10,10 @@ import java.io.File;
 @RequestMapping("/poi")
 public class POIController {
 
+    /**
+     * 
+     * @throws Exception
+     */
     @RequestMapping("nssm")
     public void nssmFaild() throws Exception{
         File inputWord = new File("D:\\ExportFile\\1.docx");

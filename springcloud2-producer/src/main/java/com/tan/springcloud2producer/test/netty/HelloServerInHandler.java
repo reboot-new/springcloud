@@ -8,10 +8,24 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.InetSocketAddress;
+
 // 该handler是InboundHandler类型
 public class HelloServerInHandler extends ChannelInboundHandlerAdapter {
 
+    String clientIP;
+    int clientPort;
+
     Logger logger = LoggerFactory.getLogger(HelloServerInHandler.class);
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        InetSocketAddress ipSocket = (InetSocketAddress)ctx.channel().remoteAddress();
+        clientIP = ipSocket.getAddress().getHostAddress();
+        clientPort = ipSocket.getPort();
+        logger.info("客户端【连接】ip地址：{}:{}",clientIP,clientPort);
+    }
+
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg)
@@ -38,7 +52,17 @@ public class HelloServerInHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("=======");
         ctx.flush();
+    }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        logger.info("客户端【断开】ip地址：{}:{}",clientIP,clientPort);
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+
+        super.exceptionCaught(ctx, cause);
     }
 }
