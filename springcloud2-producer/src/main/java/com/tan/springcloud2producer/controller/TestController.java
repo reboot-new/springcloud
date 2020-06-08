@@ -12,6 +12,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotNull;
 
 @RestController
 @RequestMapping("/test")
@@ -30,7 +31,7 @@ public class TestController {
     }
 
     @RequestMapping(value = "/get",method = RequestMethod.GET)
-    public String get(String left,String right){
+    public String get(@NotNull String left,String right){
         return "get:" + left + right;
     }
 

@@ -20,6 +20,7 @@ public class ThreadPoolExecutorTest {
             threadPoolExecutor.execute(r1);
             Executors.newFixedThreadPool(2);
             ThreadUtil.sleep(1000 * 100);
+            ExecutorService s = Executors.newFixedThreadPool(2);
 
-    }
+        }
 }

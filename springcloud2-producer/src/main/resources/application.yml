@@ -1,6 +1,6 @@
 spring:
   application:
-    name: springcloud2-producer
+    name: el-cache
   datasource:
     username: root
     password: Effective
@@ -35,7 +35,7 @@ eureka:
   client:
     enabled: false
     serviceUrl:
-      defaultZone: http://192.168.0.57:9101/eureka/
+      defaultZone: http://10.52.1.99:9101/eureka/
 
 info:
   app:
@@ -43,3 +43,6 @@ info:
 
 server:
   port: 8092
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain

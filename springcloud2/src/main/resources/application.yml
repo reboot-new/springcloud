@@ -37,20 +37,23 @@ spring:
     host: 127.0.0.1
     port: 6379
   datasource:
-    url: jdbc:sqlserver://10.52.1.102:1433;DatabaseName=gzzhpt
-    username: sa
-    password: elitel!@3$
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-#    url: jdbc:mysql://127.0.0.1:3306/rain?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&useSSL=false
-#    username: root
-#    password: Effective
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:sqlserver://10.52.1.102:1433;DatabaseName=gzzhpt
+#    username: sa
+#    password: elitel!@3$
+#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:mysql://127.0.0.1:3306/rain?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: Effective
+    driver-class-name: com.mysql.cj.jdbc.Driver
   main:
     allow-bean-definition-overriding: true
 
 mybatis:
   mapper-locations: classpath:mybatis/*.xml
 #  type-aliases-package: com.tan.springcloud2.dao
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 
 el:
   redis:
@@ -77,3 +80,7 @@ server:
 #
 #collector:
 #  servers: 127.0.0.1:11801
+
+logging:
+  level:
+    com.tan.springcloud2.dao: debug

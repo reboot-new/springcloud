@@ -1,5 +1,8 @@
 package com.tan.springcloud2producer.test.thinking.t19_1;
 
+/**
+ * 星期枚举
+ */
 enum WeekDay {
     Mon("Monday"),Tue("Tuesday"),Wed("Wednesday"),Thu("Thursday"),Fri("Friday"),Sat("Saturday"),Sun("Sunday");
     // 以上是枚举的成员，必须先定义，而且使用分号结束
