@@ -1,6 +1,6 @@
 spring:
   application:
-    name: el-cache
+    name: springcloud2-producer
   datasource:
     username: root
     password: Effective
@@ -28,6 +28,11 @@ spring:
     auto: true
     proxy-target-class: true
 
+apollo:
+  bootstrap:
+    enabled: false
+    namespaces: application
+  meta: http://192.168.0.57:9101
 
 eureka:
   instance:
