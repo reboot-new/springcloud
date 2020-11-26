@@ -6,6 +6,11 @@ import java.util.Vector;
 
 public class ThreadTest {
 
+    /**
+     * 分支1 代码更新
+     * @param args
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws InterruptedException {
 
         FilterPhoneFuction phoneFuction = (phone)->{
@@ -54,6 +59,9 @@ public class ThreadTest {
 //        List<String> phoneList = readTxtFile("");//获取手机号
     }
 
+    /**
+     * 分支2更新未提交
+     */
     @FunctionalInterface
     public interface  FilterPhoneFuction {
         boolean filter(String phone);
