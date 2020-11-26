@@ -59,6 +59,9 @@ public class ThreadTest {
 //        List<String> phoneList = readTxtFile("");//获取手机号
     }
 
+    /**
+     * 分支2更新未提交
+     */
     @FunctionalInterface
     public interface  FilterPhoneFuction {
         boolean filter(String phone);
