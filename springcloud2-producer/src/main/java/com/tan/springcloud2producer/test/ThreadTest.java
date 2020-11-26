@@ -6,6 +6,11 @@ import java.util.Vector;
 
 public class ThreadTest {
 
+    /**
+     * 分支1 代码更新
+     * @param args
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws InterruptedException {
 
         FilterPhoneFuction phoneFuction = (phone)->{
