@@ -104,6 +104,10 @@ public class TsdbxTest {
         }
     }
 
+    /**
+     * 主干代码提交2
+     * @param args
+     */
     public static void main(String[] args){
         long start = System.currentTimeMillis();
         tsdbx.voronoiTest();
