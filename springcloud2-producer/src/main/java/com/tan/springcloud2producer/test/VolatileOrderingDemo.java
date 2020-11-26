@@ -18,6 +18,13 @@ public class VolatileOrderingDemo implements Runnable {
         System.out.println("ending");
     }
 
+    /**
+     * 主干代码更新
+     *
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
 
         VolatileOrderingDemo v =new VolatileOrderingDemo();
@@ -25,6 +32,7 @@ public class VolatileOrderingDemo implements Runnable {
 //        t.start();
 
 //        new Thread(v).start();
+
         new Thread(v).start();
         Thread.sleep(1000);
         v.k = true;
