@@ -11,7 +11,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.beans.PropertyDescriptor;
 
-public class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
+public class MyInstantiationAwareBeanPostProcessor2 implements InstantiationAwareBeanPostProcessor {
 
 
     @Override

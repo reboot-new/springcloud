@@ -1,12 +1,22 @@
 package com.tan.springcloud2producer.controller;
 
 
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.http.HttpUtil;
+import com.alibaba.fastjson.JSON;
 import com.elitel.license.LicenseController;
+import com.tan.springcloud2producer.entity.ReponseEntity;
 import com.tan.springcloud2producer.entity.Student;
+import com.tan.springcloud2producer.entity.WaresCategory;
+import com.tan.springcloud2producer.entity.WaresCategoryEnum;
+import com.tan.springcloud2producer.helper.HttpHelper;
+import com.tan.springcloud2producer.helper.RestUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
@@ -26,7 +36,7 @@ public class HelloController {
     private Logger logger = LoggerFactory.getLogger(HelloController.class);
 
     @RequestMapping("/index")
-    public String index(HttpServletRequest request, HttpServletResponse response){
+    public Object index(HttpServletRequest request, HttpServletResponse response){
 //        return "/hello/index";
         String ip = null;
 
@@ -87,8 +97,23 @@ public class HelloController {
 //        response.addCookie(mouseCookie);
 //        response.addCookie(keyCookie);
 //        return ip;
-        return "/hello/index";
+
+        ReponseEntity r = new ReponseEntity();
+        r.getWaresCategory().add(new WaresCategory(WaresCategoryEnum.HOT.getType(),WaresCategoryEnum.HOT.getName()));
+        r.getWaresCategory().add(new WaresCategory(WaresCategoryEnum.ALL.getType(),WaresCategoryEnum.ALL.getName()));
+        System.out.println(JSON.toJSONString(r));
+        return r;
     }
+
+    @RequestMapping(value = "/post",method = RequestMethod.POST)
+    public String testPost(HttpServletRequest request) throws Exception{
+
+
+
+        String body = HttpHelper.getBodyString(request);
+        return body;
+    }
+
 
     @RequestMapping("/get")
     public Object getStudent(){
@@ -115,4 +140,16 @@ public class HelloController {
         }
         return message;
     }
+    @RequestMapping("/rpc")
+    public String testRpc(){
+
+        Map<String,Object> parmMap =new HashMap<String,Object>();
+        parmMap.put("right",55);
+        parmMap.put("left",111);
+        String result3= HttpUtil.get("http://127.0.0.1:8092/test/get", parmMap);
+        System.out.println(result3);
+        return "ok";
+    }
+    @Autowired
+    private RestUtil restUtil;
 }

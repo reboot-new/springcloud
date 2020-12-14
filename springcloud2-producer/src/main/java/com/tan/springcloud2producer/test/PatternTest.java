@@ -1,10 +1,22 @@
 package com.tan.springcloud2producer.test;
 
+import com.alibaba.fastjson.JSON;
+import com.tan.springcloud2producer.entity.Student;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PatternTest {
     public static void main(String[] args) {
+
+        Student s = null;
+
+        System.out.println(JSON.toJSONString(s));
+
+        System.out.println(JSON.toJSONString(new Student()));
+
+        System.out.println("============");
+
         String str = "##stcd##";
 
         // 根据以前的方法进行判断

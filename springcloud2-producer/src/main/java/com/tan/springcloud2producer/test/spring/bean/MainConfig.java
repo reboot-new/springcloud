@@ -1,10 +1,9 @@
 package com.tan.springcloud2producer.test.spring.bean;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class MainConfig {
 
     @Bean(initMethod = "myInit",destroyMethod = "myDestory")
@@ -17,9 +16,9 @@ public class MainConfig {
         return new Person1();
     }
 
-    @Bean
-    public MyInstantiationAwareBeanPostProcessor myInstantiationAwareBeanPostProcessor(){
-        return new MyInstantiationAwareBeanPostProcessor();
+//    @Bean
+    public MyInstantiationAwareBeanPostProcessor2 myInstantiationAwareBeanPostProcessor2(){
+        return new MyInstantiationAwareBeanPostProcessor2();
     }
 
 //    @Bean

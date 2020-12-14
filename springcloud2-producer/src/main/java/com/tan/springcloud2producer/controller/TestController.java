@@ -1,6 +1,8 @@
 package com.tan.springcloud2producer.controller;
 
 import cn.hutool.core.thread.ThreadUtil;
+import com.alibaba.fastjson.JSONObject;
+import com.tan.springcloud2producer.entity.Student;
 import com.tan.springcloud2producer.helper.HttpHelper;
 import com.tan.springcloud2producer.helper.JsonHelper;
 import org.slf4j.Logger;
@@ -21,10 +23,11 @@ public class TestController {
     Logger logger = LoggerFactory.getLogger(TestController.class);
 
     @RequestMapping(value = "/post",method = RequestMethod.POST)
-    public String post() throws Exception{
+    public String post(Student student) throws Exception{
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = servletRequestAttributes.getRequest();
         String body = HttpHelper.getBodyString(request);
+        Student s = JSONObject.parseObject(body, Student.class);
         String bodyJson = JsonHelper.pareByUrl(body);
         System.out.println(bodyJson);
         return "ok";

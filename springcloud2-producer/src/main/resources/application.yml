@@ -47,7 +47,7 @@ info:
      name: springcloud2-producer
 
 server:
-  port: 8092
+  port: 8091
   compression:
     enabled: true
     mime-types: application/json,application/xml,text/html,text/xml,text/plain

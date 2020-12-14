@@ -6,11 +6,6 @@ import java.util.Vector;
 
 public class ThreadTest {
 
-    /**
-     * 分支1 代码更新
-     * @param args
-     * @throws InterruptedException
-     */
     public static void main(String[] args) throws InterruptedException {
 
         FilterPhoneFuction phoneFuction = (phone)->{
@@ -55,10 +50,12 @@ public class ThreadTest {
              ) {
             phoneFuction.filter(item);
         }
-
 //        List<String> phoneList = readTxtFile("");//获取手机号
     }
 
+    /**
+     * 主干测试
+     */
     /**
      * 分支2更新未提交
      */
