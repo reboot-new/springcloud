@@ -10,7 +10,7 @@ public class TanApplicationListener implements ApplicationListener  {
     //接受到消息，回调该方法
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
-        System.out.println("TulingApplicationListener 接受到了一个事件"+event);
+//        System.out.println("TulingApplicationListener 接受到了一个事件"+event);
     }
 
     public static void main(String[] args) {

@@ -8,8 +8,15 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
 import com.google.gson.JsonObject;
+import com.tan.springcloud2producer.entity.Student;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.StopWatch;
+import org.springframework.web.client.RestTemplate;
 
 import java.net.PortUnreachableException;
+import java.util.Date;
 
 public class SearchResolve {
 
@@ -25,13 +32,16 @@ public class SearchResolve {
     public static String WARE_SKUID_PATH = "$.wareid";
 
     public static void main(String[] args) {
-        String template = "{}爱{}，就像老鼠爱大米";
+        String template = "{}-----{}";
         System.out.println(StrUtil.format(template, null, "你"));
-
-        FileReader fileReader = new FileReader("D:\\download\\chrome\\FeHelper-20201208103412.json");
+        FileReader fileReader = new FileReader("D:\\download\\chrome\\FeHelper-20201215105743.json");
         String result = fileReader.readString();
         JSONObject root = JSONObject.parseObject(result);
 
+        Object eval1 = JSONPath.eval(root, PAGE_COUNT_PATH);
+
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start("开始计时");
         System.out.println(Integer.parseInt(JSONPath.eval(root, PAGE_COUNT_PATH).toString()));
         System.out.println(Integer.parseInt(JSONPath.eval(root, PAGE_INDEX_PATH).toString()));
         System.out.println(Integer.parseInt(JSONPath.eval(root, PAGE_SIZE_PATH).toString()));
@@ -40,6 +50,7 @@ public class SearchResolve {
 //        System.out.println(Integer.parseInt(JSONPath.eval(root, "$.Head.Summary.Page.PageCount").toString()));
 
         JSONArray array = JSONArray.parseArray(JSONPath.eval(root, WARES_ARRAY_PATH).toString());
+
         if(array == null || array.size() < 1)
             return;
         for (Object obj: array) {
@@ -47,7 +58,11 @@ public class SearchResolve {
             System.out.println(JSONPath.eval(item, WARE_SKUID_PATH));
             System.out.println(JSONPath.eval(item, WARE_NAME_PATH));
             System.out.println(JSONPath.eval(item, WARE_IMGURL_PATH));
+            Student student = new Student();
+            student.setName(JSONPath.eval(item, WARE_NAME_PATH).toString());
         }
+        stopWatch.stop();
+        System.out.println(stopWatch.prettyPrint());
 
 //        System.out.println(result);
     }

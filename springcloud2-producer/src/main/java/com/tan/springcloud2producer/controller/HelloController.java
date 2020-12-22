@@ -11,13 +11,18 @@ import com.tan.springcloud2producer.entity.WaresCategory;
 import com.tan.springcloud2producer.entity.WaresCategoryEnum;
 import com.tan.springcloud2producer.helper.HttpHelper;
 import com.tan.springcloud2producer.helper.RestUtil;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
+import org.apache.commons.math3.util.MathUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -35,8 +40,15 @@ public class HelloController {
 
     private Logger logger = LoggerFactory.getLogger(HelloController.class);
 
+    @Autowired
+    RestTemplate restTemplate;
+
+//    public static String PRODUCT_SEARCCH_URL = "http://mproxy-search.jd.local/";
+public static String PRODUCT_SEARCCH_URL = "http://127.0.0.1:8091/hello/gettest/";
+
+
     @RequestMapping("/index")
-    public Object index(HttpServletRequest request, HttpServletResponse response){
+    public Object index(HttpServletRequest request, HttpServletResponse response) {
 //        return "/hello/index";
         String ip = null;
 
@@ -72,16 +84,16 @@ public class HelloController {
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ipAddresses)) {
             ip = request.getRemoteAddr();
         }
-        System.out.println("IP:"+ip);
+        System.out.println("IP:" + ip);
 
         String agent = request.getHeader("user-agent");
 
-        System.out.println("Agent:"+agent);
+        System.out.println("Agent:" + agent);
 
-        Object obj =  request.getSession().getAttribute("setkey");
-        if (obj == null){
+        Object obj = request.getSession().getAttribute("setkey");
+        if (obj == null) {
             System.out.println("session未空！");
-            request.getSession().setAttribute("setkey","hello");
+            request.getSession().setAttribute("setkey", "hello");
         }
         // 创建cookie对象
         Cookie compCookie = new Cookie("computer", "HP");
@@ -89,26 +101,24 @@ public class HelloController {
         Cookie keyCookie = new Cookie("key", "doubleflybird");
         Cookie mouseCookie = new Cookie("mouse", "leishe");
         //如果不设置使用时间，那么将取不到Cookie的值
-        mouseCookie.setMaxAge(60*60*24*30);
+        mouseCookie.setMaxAge(60 * 60 * 24 * 30);
         System.out.println(request.getContextPath());// 项目名(在tomcat中部署的项目名)
         // /zzsxt/shopping.jsp
-        keyCookie.setPath(request.getContextPath()+"/getCookie.sxt");// 一旦设置了cookie的路径，就只能通过这一个路径才能获取到cookie信息
+        keyCookie.setPath(request.getContextPath() + "/getCookie.sxt");// 一旦设置了cookie的路径，就只能通过这一个路径才能获取到cookie信息
         response.addCookie(compCookie);
 //        response.addCookie(mouseCookie);
 //        response.addCookie(keyCookie);
 //        return ip;
 
         ReponseEntity r = new ReponseEntity();
-        r.getWaresCategory().add(new WaresCategory(WaresCategoryEnum.HOT.getType(),WaresCategoryEnum.HOT.getName()));
-        r.getWaresCategory().add(new WaresCategory(WaresCategoryEnum.ALL.getType(),WaresCategoryEnum.ALL.getName()));
+        r.getWaresCategory().add(new WaresCategory(WaresCategoryEnum.HOT.getType(), WaresCategoryEnum.HOT.getName()));
+        r.getWaresCategory().add(new WaresCategory(WaresCategoryEnum.ALL.getType(), WaresCategoryEnum.ALL.getName()));
         System.out.println(JSON.toJSONString(r));
         return r;
     }
 
-    @RequestMapping(value = "/post",method = RequestMethod.POST)
-    public String testPost(HttpServletRequest request) throws Exception{
-
-
+    @RequestMapping(value = "/post", method = RequestMethod.POST)
+    public String testPost(HttpServletRequest request) throws Exception {
 
         String body = HttpHelper.getBodyString(request);
         return body;
@@ -116,40 +126,64 @@ public class HelloController {
 
 
     @RequestMapping("/get")
-    public Object getStudent(){
-//        List<Student> list = new ArrayList<>();
-//        Student s1 = new Student();
-//        s1.setAge(null);
-//        s1.setName("nihao");
-//        list.add(s1);
+    public Object getStudent() {
 
-        //
-        Map<String,String> map = new HashMap<>();
-        map.put("name",null);
-        return map;
+        String url =PRODUCT_SEARCCH_URL + "?key={key}&pagesize={pagesize}&page={page}&area_ids={area_ids}" +
+                "&warehouse_id={warehouse_id}&delivery_id={delivery_id}&site_id={site_id}&leader_id={leader_id}" +
+                "&client={client}&charset={charset}&urlencode={urlencode}&filt_type={filt_type}&pvid={pvid}&logid={logid}";
+
+        Map<String, String> parmMap = new HashMap<String, String>();
+
+        parmMap.put("key", StrUtil.format("virtual_cat_id,,{}", "2000057"));
+        parmMap.put("area_ids", "1,2810,51081,0");
+        parmMap.put("pagesize", "10");
+        parmMap.put("page", "1");
+        parmMap.put("warehouse_id", "978");//仓ID
+        parmMap.put("delivery_id", "6");//配送中心ID
+        parmMap.put("site_id", "389298716440145920");//自提点
+        parmMap.put("leader_id", "389298716440145920");//团长ID
+        parmMap.put("client", "1607347112371");
+        parmMap.put("charset", "utf8");
+        parmMap.put("urlencode", "no");
+        parmMap.put("pvid", "");
+        parmMap.put("logid", "");
+        parmMap.put("filt_type", "sale_state_filter;productext,b12v0"); //过滤掉不可售和测试的商品
+
+        String forObject = restTemplate.getForObject(url, String.class, parmMap);
+        return forObject;
     }
 
     @RequestMapping("/log")
-    public String testLog(){
+    public String testLog() {
 
         String message = null;
         try {
             message.toString();
-        }catch (Exception ex){
-            logger.error("测试空指针异常",ex);
+        } catch (Exception ex) {
+            logger.error("测试空指针异常", ex);
         }
         return message;
     }
-    @RequestMapping("/rpc")
-    public String testRpc(){
 
-        Map<String,Object> parmMap =new HashMap<String,Object>();
-        parmMap.put("right",55);
-        parmMap.put("left",111);
-        String result3= HttpUtil.get("http://127.0.0.1:8092/test/get", parmMap);
+    @RequestMapping("/rpc")
+    public String testRpc() {
+
+        Map<String, Object> parmMap = new HashMap<String, Object>();
+        parmMap.put("right", 55);
+        parmMap.put("left", 111);
+        String result3 = HttpUtil.get("http://127.0.0.1:8092/test/get", parmMap);
         System.out.println(result3);
         return "ok";
     }
+
+    @RequestMapping("/gettest")
+    public String testGet() throws Exception{
+        System.out.println("测试-=====================================================");
+
+        Thread.sleep(1000*2);
+        return "hello";
+    }
+
     @Autowired
     private RestUtil restUtil;
 }

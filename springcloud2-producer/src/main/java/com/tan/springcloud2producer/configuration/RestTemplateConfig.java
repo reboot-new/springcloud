@@ -70,9 +70,9 @@ public class RestTemplateConfig {
         //requestConfig
         RequestConfig requestConfig = RequestConfig.custom()
                 //服务器返回数据(response)的时间，超过该时间抛出read timeout
-                .setSocketTimeout(10000)
+                .setSocketTimeout(2000)
                 //连接上服务器(握手成功)的时间，超出该时间抛出connect timeout
-                .setConnectTimeout(5000)
+                .setConnectTimeout(1000)
                 //从连接池中获取连接的超时时间，超过该时间未拿到可用连接，会抛出org.apache.http.conn.ConnectionPoolTimeoutException: Timeout waiting for connection from pool
                 .setConnectionRequestTimeout(500)
                 .build();
@@ -91,7 +91,7 @@ public class RestTemplateConfig {
                 // 保持长连接配置，需要在头添加Keep-Alive
                 .setKeepAliveStrategy(new DefaultConnectionKeepAliveStrategy())
                 //重试次数，默认是3次，没有开启
-                .setRetryHandler(new DefaultHttpRequestRetryHandler(2, true))
+                .setRetryHandler(new DefaultHttpRequestRetryHandler(3, true))
                 .build();
     }
 }

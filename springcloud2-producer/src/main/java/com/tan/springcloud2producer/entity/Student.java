@@ -34,4 +34,12 @@ public class Student implements AutoCloseable {
         Thread.sleep(1000 *10);
         System.out.println("closeseesese");
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "age=" + age +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

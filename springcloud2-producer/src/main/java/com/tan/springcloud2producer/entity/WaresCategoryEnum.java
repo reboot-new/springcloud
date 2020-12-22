@@ -1,6 +1,10 @@
 package com.tan.springcloud2producer.entity;
 
+import cn.hutool.core.util.EnumUtil;
+import cn.hutool.core.util.NumberUtil;
+
 import java.lang.reflect.Method;
+import java.util.LinkedHashMap;
 
 public enum WaresCategoryEnum {
     ALL(0,"全部"),
@@ -117,7 +121,13 @@ public enum WaresCategoryEnum {
     }
 
     public static void main(String[] args) {
-        Object oobj = WaresCategoryEnum.getEnumDescriotionByValue1("111");
-        System.out.println(WaresCategoryEnum.getEnumDescriotionByValue1(null).toString());
+//        Object oobj = WaresCategoryEnum.getEnumDescriotionByValue1("111");
+//        System.out.println(WaresCategoryEnum.getEnumDescriotionByValue1(null).toString());
+
+
+//        Object obj = EnumUtil.fromString(WaresCategoryEnum.class,"0");
+        LinkedHashMap<String, WaresCategoryEnum> enumMap = EnumUtil.getEnumMap(WaresCategoryEnum.class);
+        int i  =3;
+
     }
 }
